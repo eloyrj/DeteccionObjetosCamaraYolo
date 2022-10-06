@@ -32,6 +32,43 @@ Sin embargo hay muchas clases que no se encuentran, por ejemplo en el caso que u
 
 Ahora usaremos una herramienta de etiquetado para etiquetar dichas imagenes en este caso usaremos [**Label Studio**](https://labelstud.io/).
 
-![](https://www.google.com/imgres?imgurl=https%3A%2F%2Frepository-images.githubusercontent.com%2F192640529%2F970b6900-817b-11eb-9f57-adf3f87c6ff9&imgrefurl=https%3A%2F%2Fgithub.com%2Fheartexlabs%2Flabel-studio&tbnid=AP9NTGMQ_ZnSOM&vet=12ahUKEwju2OykpMv6AhViTUEAHZYnBHEQMygBegUIARC5AQ..i&docid=tlkZyAZPq9EDDM&w=2629&h=1521&q=label%20studio&ved=2ahUKEwju2OykpMv6AhViTUEAHZYnBHEQMygBegUIARC5AQ)
+![](https://repository-images.githubusercontent.com/192640529/970b6900-817b-11eb-9f57-adf3f87c6ff9)
+
+Una vez ya con las imagenes etiquetadas tendremos que colocar las imagenes y las etiquetas separadas en datos de entrenemiento y de validación.
+
+De esta forma:
+
+- images
+    - train
+    - val
+-  labels
+    - train
+    - val
+
+Ahora necesitarems crear un archivo .yaml en el que definamos tanto las clases de nuesto entrenamiento como las rutas de los distintos datos
+
+```yalm
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ../yolov5-master/data/datasets/p2  # direccion del dataset
+train: images/train  # train images (relative to 'path') 128 images
+val: images/val  # val images (relative to 'path') 128 images
+test:  # test images (optional)
+
+# Classes
+names:
+  0: dron
+```
+
+Una vez ya hemos preparado todos los datos toca entrenar para ello usaremos la clase **train.py**.
+
+```bash 
+python train.py --weights '' --cfg models/yolov5m.yaml --data data/drones.yaml
+```
+
+donde:
+- data = el .yaml configurado previamente
+- cfg = tipo de entrenamiento que haremos, podemos aceder a 5 con distintas configuraciones.
+  ![](https://github.com/ultralytics/yolov5/releases/download/v1.0/model_comparison.png)
+- weights = un peso de un entrenamiento anterior al cual se le añadan los datos nuevos con extension .pt.
 
 </details>
