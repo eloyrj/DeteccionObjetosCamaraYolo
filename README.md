@@ -75,7 +75,7 @@ donde:
 
 <details open>
 <summary>Ejecución</summary>
-Si la ejecucion va a ser con el dataset que trae yolov5 por defecto que contiene 80 clases distintasdeveras usar
+Si la ejecucion va a ser con el dataset que trae yolov5 por defecto que contiene 80 clases distintas deberas usar
 
 ```bash 
 python detect.py --source 0 #para usar la cam
